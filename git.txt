@@ -1,0 +1,277 @@
+git -
+
+vcs - version control system
+speed
+simple
+non-linear development
+
+types of vcs -
+
+centralized vcs -
+master server/remote server
+
+distributed vcs -
+master server/remote server
+local repository
+
+master - code - lr(mirror image)
+
+cvcs - 
+it is simple to understand
+it is entirely dependent on internet,if internet/server goes down then nobody can collaborate
+at all or save required changes they are working on
+if central database is corrupted and proper backups are not present we lose everything,the entire 
+history of the project except whatever snapshots people have on their system
+
+git - dvcs
+version1 version2 version3 version4 version5
+file a      a1       a1       a2       a2
+file b      b        b        b1       b2        
+file c      c1       c2       c2       c3
+
+changes - snapshot
+
+properties of git -
+changes 
+changes upload
+
+3 states of file -
+modified - staged - commited
+
+working directory - staging area - .git repository(local repo)
+
+lifecycle of git files -
+tracked - exact opposite
+untracked - not added to commit,staging area
+
+unmodified - modified - staged - commit
+
+git command -
+git init - initialized inside the given folder,.git folder - hidden folder,ls,ls -a(shows hidden .git)
+git add - git add . - add all the files, git add d.txt 
+git commit - git commit -m "message"
+git push 
+git status - check status
+git log  
+
+git config --global user.name
+git config --global user.email
+.git - contains changes
+
+run once -
+git remote add origin (git@github.com:debakant/git-learning.git)
+git branch -M main
+git push -u origin main
+
+next time - git push
+
+git clone - 
+what - clone copy
+why -  personal,community 
+how -  git clone <url> (change name - repo)
+
+git remote -v
+git remote add myorigin (git@github.com:debakant/git-learning.git)
+git push -u myorigin main
+
+clone -> team
+clone -> changes -> push
+write access
+
+open source contribute
+fork github
+clone
+changes push github
+repo owner incorporate - pull request
+
+.gitignore file -  
+what - files changes - not tracked - store it in .gitignore 
+why - code - o/p log files - don't want to be pushed in github
+how - make .gitignore file
+
+* - all
+*.a - a
+*.[oa] - o and a 
+!lib.a - not lib.a
+/todo - curr directory todo file ignore
+test/ - all files ignore
+[0-9] - (0-9)
+? - l?b.?xt
+
+remove a file - 
+rm abc.txt
+git add abc.txt
+git commit -m "abc.txt deleted"
+
+git rm abc.txt
+git commit -m "abc.txt deleted"
+
+git rm -f lib.a - modified file removed
+git commit -m "file deleted"
+
+file modified
+git add .
+git rm --cached ab.txt - removed from staging area back to modified
+
+git commit --amend  i commit message escape :wq enter 
+what - amend - to make minor changes 
+why - reduce number of commits 
+commits are in local repository   
+required - 
+file add
+code
+edit commit msg 
+
+
+git reset 
+what - s.a - modified
+why - two files staged,bring back one file to modified stage 
+how - git reset HEAD def.txt
+git reset flag
+soft
+mixed
+hard
+
+git checkout - 
+git checkout -- <file name>
+modified - unmodified(last commit)
+git stash - undo but saved in local repository
+git stash pop
+git stash clear
+
+git restore -
+sa - modified,modified - unmodified
+git reset     git checkout
+
+git restore --staged abc.txt
+git restore abc.txt
+
+aliasing - feature not a command
+git config --global - globally
+git config --global alias.<customised cmd name> <'cmd replace'>
+
+git config --global alias.stage 'add'
+
+branches in git -
+learngitbranching.js.org - practice
+git branch
+git checkout
+shortcut
+
+types of merge in branches - 
+fast forward merge
+recursive merge
+
+git checkout -b hotfix - make branch and move to branch
+git branch -d hotfix - delete branch
+
+resolving merge conflicts
+
+beautify git log - 
+git log --all --decorate --oneline --graph
+
+ 
+remote branches,local branches
+branches - latest commit point out
+
+git push - error,use git fetch
+updates were rejected because the remote contains work that you do not have locally.this is usually
+caused by another repository pushing to the same reference.first integrate the remote changes before
+pushing again.
+
+git fetch origin
+git merge - fetch.txt in .git to working directory
+
+git pull -
+git fetch + git merge - git pull
+
+git rebase -
+single commit or sequence of commits apply on a base
+feature branch comes to main branch
+why - commit history clean,becomes linear
+rebase is different from merge(non-linear)
+how - git rebase -i main
+
+disadvantages - 
+golden rule - single development,noone is cloning the branch
+rebase - push - right, push - rebase - wrong
+
+how to contribute in a project -
+clone
+fork
+coding
+pull request
+
+clone
+fork 
+code change,push to remote url own repo
+pull request
+
+git reset - 
+
+git reset soft - 
+git reset --soft head~2,pointer moves but changes show - to staging area
+
+git reset mixed - to untracked
+git reset --mixed head~2
+
+git reset hard - file gets deleted
+git reset --hard head~2
+
+working directory - folder structure
+index - staging area
+head - latest commit
+
+git revert - 
+git revert <commit id>  
+what - undo commit,merge
+why - does not rewrite history
+how - linear development,non-linear development
+git revert -m 1 HEAD
+
+git cherry pick - 
+why - undoing,team,bug
+checkout b2
+git cherry-pick c1
+
+git reflog -
+shows the history of actions in the repo
+with this information,you can easily undo changes that have been made to a repo with git reset
+
+git rebase -i
+p - pick - use commit
+r - reword - use commit,but edit the commit message
+e - edit - use commit but stop for amending
+s - squash - use commit,but meld into previous commit
+f - fixup - like squash but discard this commit's log message
+x - exec - run command using shell
+d - drop - remove commit
+
+git diff -
+what - changes in file - staging,modified
+       changes in branch 
+git diff abc.txt - modified
+git diff
+
+git diff --staged abc.txt
+
+git branch - git diff main..feature
+
+how does git store data internally -
+A Git blob (binary large object) is the object type used to store the contents of each file in a repository.
+
+git upstream -
+project a - project b(fork of project a) - project c(fork of project b)
+(upstream)  (downstream of a)              (downstream of b)
+
+
+   
+
+
+
+       
+
+
+  
+
+ 
